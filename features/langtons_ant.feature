@@ -16,9 +16,8 @@ Scenario: 2 moves
    |w|w|w|
  And there is a Ant facing North on square (1,1)
  When the Ant moves "2" times
- Then the Grid should be:
+ Then the Ant should facing North on square (0,2)
+ And the Grid should be:
    |w|w|w|
    |w|w|b|
    |w|w|w|
- Then the Ant should be in cell (0,2)
- And the Ant is facing North

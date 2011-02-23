@@ -8,10 +8,15 @@ Given /^there is a Ant facing ([^\s]+) on square \((\d+),(\d+)\)$/ do |direction
 end
 
 When /^the Ant moves "([^"]*)" times$/ do |number_of_times_to_move|
-  @ant.move(number_of_times_to_move)
+  @grid.move_ant(number_of_times_to_move)
 end
 
 Then /^the Grid should be:$/ do |expected_grid|
   expected_grid.diff!(@grid.to_a)
+end
+
+Then /^the Ant should facing North on square \((\d+),(\d+)\)$/ do |x, y|
+  @grid.find_the_ants_coordinates.should == [x,y]
+  @grid.find_ants_direction.should == 'North'
 end
 
