@@ -1,6 +1,9 @@
 class Ant
-  def move(number_of_times)
+  def move
 
+  end
+
+  def current_cell_colour(colour)
   end
 
   def what_are_your_coordinates

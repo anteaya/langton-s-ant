@@ -13,6 +13,8 @@ class Grid
   end
 
   def move_ant(number_of_times_to_move)
+    @ant.current_cell_colour(colour) 
+    @ant.move
   end
 
   def find_the_ants_coordinates
