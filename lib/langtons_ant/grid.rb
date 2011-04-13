@@ -8,13 +8,27 @@ class Grid
     @ant = ant
   end
 
+  def colour_at(x,y)
+    @grid[x][y]
+  end
+
   def to_a
     @grid
   end
 
   def move_ant(number_of_times_to_move)
-    @ant.current_cell_colour(colour) 
-    @ant.move
+
+    number_of_times_to_move.times do
+      x,y = find_the_ants_coordinates
+      colour = @grid[x][y]
+      @ant.current_cell_colour(colour) 
+      @ant.move
+      if colour == 'w'
+        @grid[y][x] = 'b'
+      elsif colour == 'b'
+        @grid[y][x] = 'w'
+      end
+    end
   end
 
   def find_the_ants_coordinates

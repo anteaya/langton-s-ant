@@ -36,7 +36,6 @@ describe Grid do
       ant.should_receive(:what_are_your_coordinates)
 
       grid.find_the_ants_coordinates
-
     end
 
     context "a grid of all black cells" do
@@ -47,7 +46,20 @@ describe Grid do
 
         ant.should_receive(:current_cell_colour).with('b')
 
-        grid.move_ant(0)
+        grid.move_ant(1)
+      end
+
+      it "should flip the colour of the cell the ant used to be on" do
+        ant = Ant.new('North', 0, 0)
+        grid = Grid.new(all_black_grid)
+        grid.place_ant(ant)
+
+        # grid coordinates(0,0) should be white
+        grid.colour_at(0,0).should == 'b' 
+
+        grid.move_ant(1)
+
+        grid.colour_at(0,0).should == 'w'
       end
     end
 
@@ -61,7 +73,7 @@ describe Grid do
 
         ant.should_receive(:current_cell_colour).with('w')
 
-        grid.move_ant(0)
+        grid.move_ant(1)
       end
 
       it "should tell the ant to move" do
@@ -72,7 +84,7 @@ describe Grid do
 
         ant.should_receive(:move)
 
-        grid.move_ant(0)
+        grid.move_ant(1)
       end
     end
   end 
